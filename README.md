@@ -36,11 +36,12 @@ Plants which grow and thrive in the desert climate of Northern Nevada are catalo
 
 # How to get the journey going:
 ##1. Start a new Ubuntu Linux server instance on Amazon Lightsail.
--Log in and create an instance
--Choose Ubuntu (OS only) as instance image.
--Select an instance plan (basic is okay)
--Name your instance, if desired, or stick with the default name
--Create a static IP, if desired, and attach it to the instance you created.  The advantage is that if you shut down the instance and have to restart it, you retain the same IP address and don't have to change it again in all your files.  Otherwise, by default, instances are assigned dynamic IP addresses, which Lightsail warns, will change if you shut down the instance.  
+
+   - Log in and create an instance
+   - Choose Ubuntu (OS only) as instance image.
+   - Select an instance plan (basic is okay)
+   - Name your instance, if desired, or stick with the default name
+   - Create a static IP, if desired, and attach it to the instance you created.  The advantage is that if you shut down the instance and have to restart it, you retain the same IP address and don't have to change it again in all your files.  Otherwise, by default, instances are assigned dynamic IP addresses, which Lightsail warns, will change if you shut down the instance.  
 
 ##2. After instance starts up, SSH into your server on the web from Gitbash or your command line terminal on your local machine.  Note that it is possible to click "Connect using SSH" on your Lightsail instance webpage and this will take you to your cloud-based Lightsail terminal.  However, it can only be used with Port 22, which is limiting, and we are using Port 2200 for this project.  Also, Port 22 is a common target for hackers, so that is why we are using a different port as well.  
 ```
@@ -60,6 +61,7 @@ After -i in the above command, you list the path to where you stored the private
 I also copied and pasted my public IP address into Authorized JavaScript origins in my Google OAuth for my Client ID for Web Applications: http://52.26.231.94.  See Google Developers APIs site: https://console.developers.google.com  
 
 Some extra steps for the Google Oauth above (may not have been necessary):
+
 - I found the DNS address for my IP address on the internet (search IP address to DNS) and pasted that in as well: http://ec2-52-26-231-94.us-west-2.compute.amazonaws.com 
 - I also put in Authorized redirect URIs: http://ec2-52-26-231-94.us-west-2.compute.amazonaws.com/gconnect, http://ec2-52-26-231-94.us-west-2.compute.amazonaws.com/login, and http://ec2-52-26-231-94.us-west-2.compute.amazonaws.com/oauth2callback
 
@@ -71,19 +73,13 @@ sudo apt-get dist-upgrade
 sudo apt-get install finger
 sudo apt autoremove
 ```
-Select "yes" after upgrade, then  A new version of /boot/grub/menu.lst is available, but the version   │
-    │ installed currently has been locally modified.                       │
-    │                                                                      │
-    │ What would you like to do about menu.lst?                            │
-    │                                                                      │
-    │      install the package maintainer's version    
-    
-    I pressed enter to select the package maintainer's version and got the message
+Select "yes" after upgrade, then I pressed enter to select the package maintainer's version and got the message
 "Now your virtual machine's packages are all installed and updated.""
 
 I also got this message "The following package was automatically installed and is no longer required:
   snap-confine
-Use 'sudo apt autoremove' to remove it.""
+Use 'sudo apt autoremove' to remove it."
+
  I used that command and  it was removed.
 
 ##4. Add a new user called *grader* and give grader sudo permissions:
@@ -291,7 +287,7 @@ sudo service apache2 restart
 
 ##18. Enjoy a working app on a publicly viewable server!
 
-##Troubleshooting Tips:
+## Troubleshooting Tips:
 1.  To find errors to aid in troubleshooting:
 ```
 sudo tail /var/log/apache2/error.log
@@ -301,7 +297,7 @@ Errors I ran into and had to fix:  missing modules, absolute paths not written a
 To remove a directory (if you have one you installed by accident)
 https://askubuntu.com/questions/217893/how-to-delete-a-non-empty-directory-in-terminal
 
-More useful tips:
+## More useful tips:
 
 Make sure you have edited your client_secrets.json file to include your IP address, and that you have included the absolute paths to your client_secrets.json file in generate_databaseinfo.py, also that the path to your virtual environment is the absolute path in the /var/www/catalog/catalog.wsgi file.  If you have problems with your pictures showing up, look in your Static folder and make sure your .jpg files are lower case (NOT .JPG).  This is because UNIX is sensitive to upper and lower case and .JPG won't be recognized.  
 
