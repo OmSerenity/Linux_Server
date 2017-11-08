@@ -109,7 +109,10 @@ Using your Windows File Explorer or Finder on Mac, find the grader.pub file and 
 ```
 sudo nano ~/.ssh/authorized_keys
 ```
-Use nano commands "Ctrl-O", then press "Enter" to save, then "Ctrl-X" to exit the file.
+Use nano commands "Ctrl-O", then press "Enter" to save, then "Ctrl-X" to exit the file.  
+
+**Note where you found the grader.pub file because that you will need to give the (Udacity) reviewer/grader the private key that was generated/paired with this public key.  In my machine, it was under C:/Users/(what my computer's user was names)/.ssh 
+
 Then, change the permissions and change the owner from *root* to *grader*:
 ```
 sudo chmod 700 ~/.ssh
