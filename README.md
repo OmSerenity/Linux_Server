@@ -265,7 +265,7 @@ Lock down the permissions to only let *catalog* role create tables: `# GRANT ALL
 ```python
 engine = create_engine('postgresql://catalog:postgres@localhost/catalog')
 ```
-Setup the database with: `$ python /var/www/catalog/catalog/database_setup.py`.
+Setup the database with: `$ python /var/www/catalog/catalog/generate_dbinfo.py` or cd into the directory where your generate_dbinfo.py file is and use this command `sudo python generate_dbinfo.py`
 
 To prevent potential attacks, double check that no remote connections to the database are allowed. Open file: `$ sudo nano /etc/postgresql/9.3/main/pg_hba.conf` and edit to make it look like this: 
 ```
