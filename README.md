@@ -119,7 +119,7 @@ sudo chmod 700 ~/.ssh
 sudo chmod 644 ~/.ssh/authorized_keys
 sudo chown -R grader:grader ~/.ssh
 ```
-Important: from now on, we can log into the remote VM through ssh with the following command:
+Important: from now on, we can log into the remote VM through ssh with the following command (this logs us in on the default port 22 but after we change the port in #7 below, we will add the new port # to this command)
 ``` 
 ssh -i ~/.ssh/grader.rsa grader@52.26.231.94
 ```
@@ -137,7 +137,7 @@ In Lightsail, first go under your instance: Networking/Firewall and add TCP 2200
 sudo nano /etc/ssh/sshd_config  (Edit the port line to 2200)
 sudo service ssh restart
 ```
-After this, you can always log into the Lightsail VM from Gitbash or your command line (instead of using the initial ssh command we used in step 2) with: ssh -i ~/.ssh/grader.rsa -p 2200 grader @52.26.231.94 
+**Important:  After this, you can always log into the Lightsail VM from Gitbash or your command line (instead of using the initial ssh command we used in step 2) with: ssh -i ~/.ssh/grader.rsa -p 2200 grader@52.26.231.94 
 
 ##8.  Disable ssh login for root user
 ```
